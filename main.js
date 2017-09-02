@@ -1,7 +1,13 @@
 var h = 0.1;
-var x = [0, 0.1, 0.2, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+//var x = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1];
+var x = [];
 var y = [-1];
 var precisaoNumerica = 5; //numero de casas decimais depois da virgula
+
+function geraX(tamanho){
+	for(i = 0; i <= tamanho; i++)
+		x.push(i/10);
+}
 
 function Y(yi, k1, k2, k3, k4){
 	result = yi+(h/6)*(k1 + 2*k2 + 2*k3 + k4);
@@ -37,8 +43,11 @@ function k4(xi, yi){
 	return yLinha(xi, yi);
 }
 
+geraX(10);
+
 for(let i in x){
 	console.log("iteração "+i);
+	console.log("x = "+x[i])
 	var K1 = k1(x[i], y[i]);
 	console.log("k1: "+K1);
 	var K2 = k2(x[i], y[i]);
@@ -53,8 +62,15 @@ for(let i in x){
 	console.log("y"+j+" = "+y[j]);
 }
 
+var soma = 0;
+for(i in y){
+	soma += y[i];
+}
+//console.log(y);
+var media = soma/y.length;
 
-
+console.log("--------------------------");
+console.log("media: "+media);
 
 
 
